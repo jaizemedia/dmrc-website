@@ -7,7 +7,7 @@ export const menuItems: IMenuItem[] = [
   },
   {
     text: "Give",
-    url: "#give"
+    url: "https://donate.stripe.com/3cs8AzeVxc8se1W5kk"
 
   },
   {
