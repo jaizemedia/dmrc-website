@@ -2,15 +2,15 @@ import { IMenuItem } from "@/types";
 
 export const menuItems: IMenuItem[] = [
     {
-        text: "Features",
-        url: "#features"
-    },
-    {
-        text: "Pricing",
-        url: "#pricing"
-    },
-    {
-        text: "Testimonials",
-        url: "#testimonials"
-    }
+            text: "YouTube",
+            url: "https://www.youtube.com/@disciplemakerschurch_mk"
+        },
+        {
+            text: "Instagram",
+            url: "https://www.instagram.com/disciplemakerschurch.mk/"
+        },
+        {
+            text: "TikTok",
+            url: "https://www.tiktok.com/@disciplemakerschurchmk"
+        }
 ];
