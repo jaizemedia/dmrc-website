@@ -13,6 +13,10 @@ export const footerDetails: {
             url: "https://www.youtube.com/@disciplemakerschurch_mk"
         },
         {
+            text: "WhatsApp",
+            url: "https://wa.me/+447359293685"
+        },
+        {
             text: "Instagram",
             url: "https://www.instagram.com/disciplemakerschurch.mk/"
         },
