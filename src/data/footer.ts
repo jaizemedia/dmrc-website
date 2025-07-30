@@ -5,33 +5,22 @@ export const footerDetails: {
     quickLinks: IMenuItem[];
     email: string;
     telephone: string;
-    socials: ISocials;
 } = {
-    subheading: "Empowering businesses with cutting-edge financial technology solutions.",
+    subheading: "We are a family, not just a gathering.",
     quickLinks: [
         {
-            text: "Features",
-            url: "#features"
+            text: "YouTube",
+            url: "https://www.youtube.com/@disciplemakerschurch_mk"
         },
         {
-            text: "Pricing",
-            url: "#pricing"
+            text: "Instagram",
+            url: "https://www.instagram.com/disciplemakerschurch.mk/"
         },
         {
-            text: "Testimonials",
-            url: "#testimonials"
+            text: "TikTok",
+            url: "https://www.tiktok.com/@disciplemakerschurchmk"
         }
     ],
-    email: 'address@yoursite.com',
-    telephone: '+1 (123) 456-7890',
-    socials: {
-        // github: 'https://github.com',
-        // x: 'https://twitter.com/x',
-        twitter: 'https://twitter.com/Twitter',
-        facebook: 'https://facebook.com',
-        // youtube: 'https://youtube.com',
-        linkedin: 'https://www.linkedin.com',
-        // threads: 'https://www.threads.net',
-        instagram: 'https://www.instagram.com',
-    }
+    email: 'contact.disciplemakerschurch.uk',
+    telephone: '+44 7359 293685',
 }

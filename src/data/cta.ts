@@ -1,6 +1,4 @@
 export const ctaDetails = {
-    heading: 'Join Over 1 Million Users To Transform Your Finances',
-    subheading: 'Your journey to financial freedom starts here. Download Finwise today and take the first step towards a brighter financial future!',
-    appStoreUrl: '#',
-    googlePlayUrl: '#'
+    heading: 'Join us Every Sunday at 9am',
+    subheading: 'Great Holm Community Centre, 87 Kensington Drive, Milton Keynes, MK8 9AY',
 }

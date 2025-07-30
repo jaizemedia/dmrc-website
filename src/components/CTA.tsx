@@ -1,8 +1,5 @@
 import { ctaDetails } from "@/data/cta"
 
-import AppStoreButton from "./AppStoreButton"
-import PlayStoreButton from "./PlayStoreButton"
-
 const CTA: React.FC = () => {
     return (
         <section id="cta" className="mt-10 mb-5 lg:my-20">
@@ -17,10 +14,6 @@ const CTA: React.FC = () => {
 
                         <p className="mx-auto max-w-xl md:px-5">{ctaDetails.subheading}</p>
 
-                        <div className="mt-4 flex flex-col sm:flex-row items-center sm:gap-4">
-                        <AppStoreButton />
-                        <PlayStoreButton />
-                        </div>
                     </div>
                 </div>
             </div>
