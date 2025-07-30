@@ -1,5 +1,5 @@
 export const heroDetails = {
-    heading: 'Smart, Secure, Simple Financial Management',
-    subheading: 'From effortless budgeting to real-time investment insights, Finwise puts you in control of your money like never before',
+    heading: 'We are a family, not just a gathering.',
+    subheading: 'Join us every Sunday at 9am @Great Holm Community Centre',
     centerImageSrc: '/images/hero-mockup.webp',
 }
