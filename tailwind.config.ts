@@ -8,6 +8,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        montserrat: ['Montserrat', 'sans-serif'],
+      },
       colors: {
         'custom-gold': '#BF9B30',
         'custom-gold-dark': '#8C6C1C', // Adjust this value if you prefer a different shade

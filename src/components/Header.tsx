@@ -24,7 +24,7 @@ const Header: React.FC = () => {
                     {/* Logo */}
                     <Link href="/" className="flex items-center gap-2">
                         <img src="/images/Church Logo (1).png" alt="Church Logo" className="w-7 h-7 object-contain" />
-                        <span className="manrope text-xl font-semibold text-foreground cursor-pointer">
+                        <span className="montserrat text-xl font-semibold text-foreground cursor-pointer">
                             {siteDetails.siteName}
                         </span>
                     </Link>

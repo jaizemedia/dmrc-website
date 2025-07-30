@@ -22,6 +22,12 @@ To reach people from every background with the life-changing message of Jesus Ch
   We&rsquo;re committed to becoming more like Jesus &mdash; not just in belief, but in practice. We don&rsquo;t stop at salvation &mdash; we walk with people as they grow deeper in faith, maturity, and purpose.
 </p>
           </div>
+          <div className="bg-gray-100 p-6 rounded-lg shadow-md hover:shadow-lg transition">
+            <h3 className="text-xl font-semibold mb-2">Our Vision</h3>
+            <p>
+To build a Christ-centered, Holy Spirit-empowered community that reaches people of all backgrounds, nurtures deep discipleship, equips believers through the Word to live transformed lives for the glory of God, and empowers them to live out the gospel in love, power, and purpose.            
+</p>
+          </div>
         </div>
       </div>
     </section>

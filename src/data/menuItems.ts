@@ -6,6 +6,11 @@ export const menuItems: IMenuItem[] = [
     url: "#about"
   },
   {
+    text: "Give",
+    url: "#give"
+
+  },
+  {
             text: "YouTube",
             url: "https://www.youtube.com/@disciplemakerschurch_mk"
         },
