@@ -1,5 +1,5 @@
 export const heroDetails = {
-    heading: 'We are a family, not just a gathering.',
+    heading: 'Be a part of our church family!',
     subheading: 'Join us every Sunday at 9am @Great Holm Community Centre',
     centerImageSrc: '/images/hero-mockup.png',
 }
