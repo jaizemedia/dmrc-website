@@ -8,7 +8,6 @@ import Give from "@/components/Give";
 const HomePage: React.FC = () => {
   return (
     <>
-      <Give/>
       <Hero />
       <About />
       <Give/>
