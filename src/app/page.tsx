@@ -11,6 +11,7 @@ const HomePage: React.FC = () => {
       <Give/>
       <Hero />
       <About />
+      <Give/>
       <Container>
         <CTA />
       </Container>
