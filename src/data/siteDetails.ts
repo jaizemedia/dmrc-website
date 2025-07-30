@@ -1,5 +1,5 @@
 export const siteDetails = {
-    siteName: 'Disciple Makers Revival Church',
+    siteName: 'DMCI UK',
     siteUrl: 'https://www.disciplemakerschurch.uk/',
     metadata: {
         title: 'Disciple Makers Revival Church',
