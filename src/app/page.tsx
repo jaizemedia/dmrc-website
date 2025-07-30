@@ -7,8 +7,9 @@ import About from "@/components/About";
 const HomePage: React.FC = () => {
   return (
     <>
-      <About />
+      
       <Hero />
+      <About />
       <Container>
         <CTA />
       </Container>
