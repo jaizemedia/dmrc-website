@@ -1,5 +1,3 @@
-import { ctaDetails } from "@/data/cta"
-
 const Give: React.FC = () => {
     return (
         <section id="cta" className="mt-10 mb-5 lg:my-20">
