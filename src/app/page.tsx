@@ -7,6 +7,7 @@ import About from "@/components/About";
 const HomePage: React.FC = () => {
   return (
     <>
+      <About />
       <Hero />
       <Container>
         <CTA />
