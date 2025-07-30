@@ -19,8 +19,8 @@ To reach people from every background with the life-changing message of Jesus Ch
           <div className="bg-gray-100 p-6 rounded-lg shadow-md hover:shadow-lg transition">
             <h3 className="text-xl font-semibold mb-2">Join Us</h3>
             <p>
-We are committed to becoming more like Jesus - not just in belief, but in practice, We don't stop at salvation - we walk with people as they grow deeper in faith, maturity, and purpose.
-            </p>
+  We&rsquo;re committed to becoming more like Jesus &mdash; not just in belief, but in practice. We don&rsquo;t stop at salvation &mdash; we walk with people as they grow deeper in faith, maturity, and purpose.
+</p>
           </div>
         </div>
       </div>
