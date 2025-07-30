@@ -39,9 +39,12 @@ const Header: React.FC = () => {
                             </li>
                         ))}
                         <li>
-                            <Link href="#cta" className="text-black bg-primary hover:bg-primary-accent px-8 py-3 rounded-full transition-colors">
-                                Download
-                            </Link>
+                            <Link
+  href="#cta"
+  className="text-black bg-custom-gold hover:bg-custom-gold-dark px-8 py-3 rounded-full transition-colors"
+>
+  Download
+</Link>
                         </li>
                     </ul>
 
