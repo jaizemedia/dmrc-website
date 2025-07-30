@@ -10,7 +10,7 @@ const Give: React.FC = () => {
                     <div className="h-full flex flex-col items-center justify-center text-white text-center px-5">
                         <h2 className="text-2xl sm:text-3xl md:text-5xl md:leading-tight font-semibold mb-4 max-w-2xl">If you feel led to bless this church financially, please use the link below.</h2>
 
-<p>
+
               <a
                 href="https://donate.stripe.com/3cs8AzeVxc8se1W5kk"
                 target="_blank"
@@ -19,7 +19,7 @@ const Give: React.FC = () => {
               >
                 GIVE
               </a>
-            </p>
+
                     </div>
                 </div>
             </div>
