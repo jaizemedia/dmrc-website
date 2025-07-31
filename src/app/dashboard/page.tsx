@@ -75,6 +75,7 @@ const GiveForm: React.FC = () => {
         cardElement.clear();
       }
     } catch (err) {
+          console.error(err); // ✅ Now err is used
       setMessage('Payment failed, please try again.');
     } finally {
       setLoading(false);
