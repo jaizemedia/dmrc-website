@@ -7,8 +7,7 @@ import {
   getAuth,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
-  signInWithPopup,
-  GoogleAuthProvider,
+
 } from 'firebase/auth';
 import { getFirestore, doc, setDoc, getDoc } from 'firebase/firestore';
 import { siteDetails } from '@/data/siteDetails';
@@ -29,7 +28,6 @@ const firebaseConfig = {
 // Initialize Firebase and services
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-const googleProvider = new GoogleAuthProvider();
 const db = getFirestore(app);
 
 const AuthPage: React.FC = () => {
@@ -65,17 +63,6 @@ const AuthPage: React.FC = () => {
       router.push('/dashboard');
     } catch {
       setError('Authentication failed');
-    }
-  };
-
-  const handleGoogle = async () => {
-    setError(null);
-    try {
-      const cred = await signInWithPopup(auth, googleProvider);
-      await createUserProfile(cred.user.uid, cred.user.email!);
-      router.push('/dashboard');
-    } catch {
-      setError('Google sign-in failed');
     }
   };
 
@@ -126,12 +113,6 @@ return (
             : 'Already have an account? Login'}
         </button>
 
-        <button
-          onClick={handleGoogle}
-          className="mt-4 w-full py-3 bg-[#4285F4] text-white font-semibold rounded-md hover:bg-[#357ae8] transition duration-300"
-        >
-          Sign in with Google
-        </button>
       </div>
     </div>
   </Container>

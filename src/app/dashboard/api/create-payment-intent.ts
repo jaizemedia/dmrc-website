@@ -3,7 +3,7 @@ import Stripe from 'stripe';
 
 // Replace with your actual secret key
 const stripe = new Stripe('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', {
-  apiVersion: '2025-07-30.basil' as any, // force-cast to bypass strict type
+  apiVersion: undefined, // for example
 });
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -17,9 +17,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(400).json({ error: 'Invalid amount' });
   }
 
+  // Convert pounds to pence (e.g., £2.75 -> 275)
+  const amountInPence = Math.round(amount * 100);
+
   try {
     const paymentIntent = await stripe.paymentIntents.create({
-      amount: amount, // amount is in pence (e.g., £10.00 = 1000)
+      amount: amountInPence,
       currency: 'gbp',
       payment_method_types: ['card'],
       description: 'Church Offering',
