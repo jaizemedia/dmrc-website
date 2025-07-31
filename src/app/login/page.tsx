@@ -12,7 +12,6 @@ import {
 } from 'firebase/auth';
 import { getFirestore, doc, setDoc, getDoc } from 'firebase/firestore';
 import { siteDetails } from '@/data/siteDetails';
-import '@/styles/globals.css';
 import Container from "@/components/Container";
 
 
