@@ -11,8 +11,6 @@ import {
   GoogleAuthProvider,
 } from 'firebase/auth';
 import { getFirestore, doc, setDoc, getDoc } from 'firebase/firestore';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 import { siteDetails } from '@/data/siteDetails';
 
 // Firebase config
