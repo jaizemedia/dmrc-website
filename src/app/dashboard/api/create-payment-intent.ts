@@ -16,28 +16,20 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   try {
-    const session = await stripe.checkout.sessions.create({
+    const paymentIntent = await stripe.paymentIntents.create({
+      amount: Math.round(amount * 100),
+      currency: 'gbp',
       payment_method_types: ['card'],
-      mode: 'payment',
-      line_items: [
-        {
-          price_data: {
-            currency: 'gbp',
-            product_data: {
-              name: 'Church Offering',
-            },
-            unit_amount: Math.round(amount * 100), // amount in pence
-          },
-          quantity: 1,
-        },
-      ],
-      success_url: `${req.headers.origin}/dashboard?payment=success`,
-      cancel_url: `${req.headers.origin}/dashboard?payment=cancel`,
     });
 
-    return res.status(200).json({ url: session.url });
-  } catch (error: any) {
-    console.error('Stripe Checkout Session error:', error);
-    return res.status(500).json({ error: error.message || 'Internal Server Error' });
+    return res.status(200).json({ clientSecret: paymentIntent.client_secret });
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      console.error('Stripe PaymentIntent error:', error.message);
+      return res.status(500).json({ error: error.message });
+    }
+
+    console.error('Unknown Stripe error:', error);
+    return res.status(500).json({ error: 'Internal Server Error' });
   }
 }

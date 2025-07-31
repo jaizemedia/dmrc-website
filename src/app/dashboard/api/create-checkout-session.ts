@@ -26,7 +26,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             product_data: {
               name: 'Church Offering',
             },
-            unit_amount: Math.round(amount * 100), // amount in pence
+            unit_amount: Math.round(amount * 100),
           },
           quantity: 1,
         },
@@ -36,8 +36,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     });
 
     return res.status(200).json({ url: session.url });
-  } catch (error: any) {
-    console.error('Stripe Checkout Session error:', error);
-    return res.status(500).json({ error: error.message || 'Internal Server Error' });
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      console.error('Stripe Checkout Session error:', error.message);
+      return res.status(500).json({ error: error.message });
+    }
+
+    console.error('Unknown Stripe error:', error);
+    return res.status(500).json({ error: 'Internal Server Error' });
   }
 }
