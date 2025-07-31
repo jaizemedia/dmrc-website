@@ -138,8 +138,7 @@ const AuthPage: React.FC = () => {
 
   return (
     <>
-      <Header />
-      <main style={container}>
+         <main style={container}>
         <h1>{siteDetails.siteName}</h1>
         <p>{isLogin ? 'Login to your account' : 'Create a new account'}</p>
         <form onSubmit={handleSubmit} style={formStyle}>
@@ -173,7 +172,6 @@ const AuthPage: React.FC = () => {
           Sign in with Google
         </button>
       </main>
-      <Footer />
     </>
   );
 };
