@@ -12,6 +12,9 @@ import {
 } from 'firebase/auth';
 import { getFirestore, doc, setDoc, getDoc } from 'firebase/firestore';
 import { siteDetails } from '@/data/siteDetails';
+import '@/styles/globals.css';
+import Container from "@/components/Container";
+
 
 // Firebase config
 const firebaseConfig = {
@@ -136,6 +139,7 @@ const AuthPage: React.FC = () => {
 
   return (
     <>
+    <Container>
          <main style={container}>
         <h1>{siteDetails.siteName}</h1>
         <p>{isLogin ? 'Login to your account' : 'Create a new account'}</p>
@@ -170,6 +174,7 @@ const AuthPage: React.FC = () => {
           Sign in with Google
         </button>
       </main>
+    </Container>
     </>
   );
 };
