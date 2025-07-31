@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Container from '@/components/Container';
 import EventsWidget from '@/components/EventCalendarEmbed';
 import { getFirestore, collection, addDoc, serverTimestamp } from 'firebase/firestore';
@@ -11,7 +11,6 @@ import { loadStripe } from '@stripe/stripe-js';
 import {
   Elements,
   CardElement,
-  PaymentRequestButtonElement,
   useStripe,
   useElements,
 } from '@stripe/react-stripe-js';
@@ -44,71 +43,8 @@ const GiveForm: React.FC = () => {
   const [amount, setAmount] = useState('');
   const [message, setMessage] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
-  const [paymentRequest, setPaymentRequest] = useState<any>(null);
 
-  useEffect(() => {
-    if (!stripe) {
-      setPaymentRequest(null);
-      return;
-    }
-
-    if (!amount || Number(amount) <= 0) {
-      setPaymentRequest(null);
-      return;
-    }
-
-    const pr = stripe.paymentRequest({
-      country: 'GB',
-      currency: 'gbp',
-      total: {
-        label: 'Offering',
-        amount: Number(amount) * 100,
-      },
-      requestPayerName: true,
-      requestPayerEmail: true,
-    });
-
-    // Check availability of the Payment Request API.
-    pr.canMakePayment().then((result) => {
-      if (result) {
-        setPaymentRequest(pr);
-      } else {
-        setPaymentRequest(null);
-      }
-    });
-
-    pr.on('paymentmethod', async (ev: any) => {
-      try {
-        const response = await fetch('/api/create-payment-intent', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ amount: Number(amount) * 100 }),
-        });
-
-        const { clientSecret } = await response.json();
-
-        const { error: confirmError, paymentIntent } = await stripe.confirmCardPayment(clientSecret, {
-          payment_method: ev.paymentMethod.id,
-        }, { handleActions: false });
-
-        if (confirmError) {
-          ev.complete('fail');
-          setMessage(confirmError.message || 'Payment failed');
-        } else {
-          ev.complete('success');
-          setMessage('Thank you for your offering!');
-          setAmount('');
-          elements?.getElement(CardElement)?.clear();
-        }
-      } catch (err) {
-        ev.complete('fail');
-        setMessage('Payment failed, please try again.');
-        console.error(err);
-      }
-    });
-  }, [stripe, amount, elements]);
-
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!stripe || !elements) return;
 
@@ -119,21 +55,21 @@ const GiveForm: React.FC = () => {
       const response = await fetch('/api/create-payment-intent', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ amount: Number(amount) * 100 }),
+        body: JSON.stringify({ amount: Number(amount) * 100 }), // GBP cents
       });
 
-      const { clientSecret } = await response.json();
+      const { clientSecret } = (await response.json()) as { clientSecret: string };
 
       const cardElement = elements.getElement(CardElement);
       if (!cardElement) throw new Error('Card element not found');
 
-      const { error, paymentIntent } = await stripe.confirmCardPayment(clientSecret, {
+      const result = await stripe.confirmCardPayment(clientSecret, {
         payment_method: { card: cardElement },
       });
 
-      if (error) {
-        setMessage(error.message || 'Payment failed');
-      } else if (paymentIntent?.status === 'succeeded') {
+      if (result.error) {
+        setMessage(result.error.message || 'Payment failed');
+      } else if (result.paymentIntent?.status === 'succeeded') {
         setMessage('Thank you for your offering!');
         setAmount('');
         cardElement.clear();
@@ -148,12 +84,6 @@ const GiveForm: React.FC = () => {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4 max-w-md">
-      {paymentRequest && (
-        <div className="mb-4">
-          <PaymentRequestButtonElement options={{ paymentRequest }} />
-        </div>
-      )}
-
       <input
         type="number"
         min="1"
@@ -163,11 +93,9 @@ const GiveForm: React.FC = () => {
         required
         className="w-full px-4 py-2 border border-gray-300 rounded-md"
       />
-
       <div className="p-3 border border-gray-300 rounded-md">
         <CardElement options={{ hidePostalCode: true }} />
       </div>
-
       <button
         type="submit"
         disabled={!stripe || loading}
@@ -175,7 +103,6 @@ const GiveForm: React.FC = () => {
       >
         {loading ? 'Processing...' : 'Give Offering'}
       </button>
-
       {message && <p className="mt-2 text-green-600">{message}</p>}
     </form>
   );
@@ -192,7 +119,7 @@ const Dashboard: React.FC = () => {
   const [prayerMessage, setPrayerMessage] = useState('');
   const [prayerSuccess, setPrayerSuccess] = useState<string | null>(null);
 
-  const handleVolunteerSubmit = async (e: React.FormEvent) => {
+  const handleVolunteerSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
       await addDoc(collection(db, 'volunteers'), {
@@ -211,7 +138,7 @@ const Dashboard: React.FC = () => {
     }
   };
 
-  const handlePrayerSubmit = async (e: React.FormEvent) => {
+  const handlePrayerSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
       await addDoc(collection(db, 'prayerRequests'), {
@@ -290,13 +217,17 @@ const Dashboard: React.FC = () => {
           {/* Stripe Giving Form */}
           <section>
             <h2 className="text-3xl font-bold mb-4">Give Offering</h2>
-            <GiveForm />
+            <StripeProvider>
+              <GiveForm />
+            </StripeProvider>
           </section>
 
-          {/* Event Widget */}
+          {/* Events Section */}
           <section>
             <h2 className="text-3xl font-bold mb-4">Upcoming Events</h2>
-            <EventsWidget />
+            <div className="border p-6 rounded-md bg-white shadow-sm">
+              <EventsWidget />
+            </div>
           </section>
         </div>
       </Container>
@@ -304,10 +235,4 @@ const Dashboard: React.FC = () => {
   );
 };
 
-const App: React.FC = () => (
-  <StripeProvider>
-    <Dashboard />
-  </StripeProvider>
-);
-
-export default App;
+export default Dashboard;
