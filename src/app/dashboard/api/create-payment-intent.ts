@@ -16,7 +16,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(400).json({ error: 'Invalid amount' });
   }
 
-  const amountInPence = Math.round(amount * 100);
+const amountInPence = amount; // amount already in pence from frontend
 
   try {
     const paymentIntent = await stripe.paymentIntents.create({
