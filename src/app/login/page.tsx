@@ -82,7 +82,7 @@ const AuthPage: React.FC = () => {
 
 return (
   <Container>
-    <div className="flex items-center justify-center min-h-[80vh] py-12">
+<div className="flex items-center justify-center min-h-[80vh] pt-28 pb-12">
       <div className="w-full max-w-md bg-[#f3f3f5] rounded-xl shadow-md px-8 py-10 text-center">
         <h1 className="text-2xl font-bold mb-1 manrope">{siteDetails.siteName}</h1>
         <p className="text-gray-600 mb-6">
