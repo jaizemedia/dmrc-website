@@ -81,7 +81,8 @@ const AuthPage: React.FC = () => {
 
   const container: React.CSSProperties = {
     maxWidth: 400,
-    margin: '5vh auto',
+    marginTop: '120px',
+  marginBottom: '60px',
     padding: 30,
     borderRadius: 10,
     background: '#f4f7ff',
