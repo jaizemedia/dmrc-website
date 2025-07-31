@@ -132,7 +132,7 @@ const Dashboard: React.FC = () => {
       setVolunteerName('');
       setVolunteerEmail('');
       setVolunteerMessage('');
-    } catch (error) {
+    } catch (_error) {
       setVolunteerSuccess('Failed to submit volunteer info. Please try again.');
     }
   };
@@ -146,7 +146,7 @@ const Dashboard: React.FC = () => {
       });
       setPrayerSuccess('Your prayer request has been submitted.');
       setPrayerMessage('');
-    } catch (error) {
+    } catch (_error) {
       setPrayerSuccess('Failed to submit prayer request. Please try again.');
     }
   };
