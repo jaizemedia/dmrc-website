@@ -137,46 +137,62 @@ const AuthPage: React.FC = () => {
     textAlign: 'center',
   };
 
-  return (
-    <>
-    <Container>
-         <main style={container}>
-        <h1>{siteDetails.siteName}</h1>
-        <p>{isLogin ? 'Login to your account' : 'Create a new account'}</p>
-        <form onSubmit={handleSubmit} style={formStyle}>
+return (
+  <Container>
+    <div className="flex items-center justify-center min-h-[80vh] py-12">
+      <div className="w-full max-w-md bg-[#f3f3f5] rounded-xl shadow-md px-8 py-10 text-center">
+        <h1 className="text-2xl font-bold mb-1 manrope">{siteDetails.siteName}</h1>
+        <p className="text-gray-600 mb-6">
+          {isLogin ? 'Login to your account' : 'Create a new account'}
+        </p>
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4 text-left">
           <input
-            style={inputStyle}
             type="email"
             placeholder="Email"
             value={email}
             onChange={e => setEmail(e.target.value)}
             required
+            className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary bg-white"
           />
           <input
-            style={inputStyle}
             type="password"
             placeholder="Password"
             value={password}
             onChange={e => setPassword(e.target.value)}
             required
+            className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary bg-white"
           />
-          <button type="submit" style={buttonStyle}>
+          <button
+            type="submit"
+            className="w-full py-3 bg-secondary hover:bg-blue-700 text-white font-semibold rounded-md transition duration-300"
+          >
             {isLogin ? 'Login' : 'Sign Up'}
           </button>
         </form>
-        {error && <p style={errorStyle}>{error}</p>}
-        <button onClick={() => setIsLogin(!isLogin)} style={toggleStyle}>
+
+        {error && (
+          <p className="text-red-600 text-sm mt-4">{error}</p>
+        )}
+
+        <button
+          onClick={() => setIsLogin(!isLogin)}
+          className="mt-6 w-full py-3 border border-gray-300 text-gray-800 font-semibold rounded-md hover:bg-gray-100 transition duration-300"
+        >
           {isLogin
             ? 'Need an account? Sign Up'
             : 'Already have an account? Login'}
         </button>
-        <button onClick={handleGoogle} style={googleStyle}>
+
+        <button
+          onClick={handleGoogle}
+          className="mt-4 w-full py-3 bg-[#4285F4] text-white font-semibold rounded-md hover:bg-[#357ae8] transition duration-300"
+        >
           Sign in with Google
         </button>
-      </main>
-    </Container>
-    </>
-  );
+      </div>
+    </div>
+  </Container>
+);
 };
 
 export default AuthPage;
