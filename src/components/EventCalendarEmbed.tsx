@@ -1,6 +1,5 @@
 'use client';
 
-
 import React, { useEffect, useRef } from 'react';
 
 function EventCalendarEmbed() {
@@ -24,7 +23,18 @@ function EventCalendarEmbed() {
     }
   }, []);
 
-  return <div ref={containerRef} />;
+  return (
+    <div
+      ref={containerRef}
+      style={{
+        width: '100%',       // full width of parent container
+        maxWidth: '600px',   // max width limit
+        height: '400px',     // fixed height limit
+        overflow: 'auto',    // scrollbars if content overflows
+        margin: '0 auto',    // center horizontally if you want
+      }}
+    />
+  );
 }
 
 export default EventCalendarEmbed;

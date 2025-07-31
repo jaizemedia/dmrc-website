@@ -40,10 +40,10 @@ const Header: React.FC = () => {
                         ))}
                         <li>
                             <Link
-  href="https://maps.app.goo.gl/TNEza75WofLqhMbp8"
+  href="/login"
   className="text-black bg-custom-gold hover:bg-custom-gold-dark px-8 py-3 rounded-full transition-colors"
 >
-  Where to Find Us
+Login
 </Link>
                         </li>
                     </ul>
@@ -88,8 +88,8 @@ const Header: React.FC = () => {
                             </li>
                         ))}
                         <li>
-                            <Link href="https://maps.app.goo.gl/TNEza75WofLqhMbp8" className="text-black bg-primary hover:bg-primary-accent px-5 py-2 rounded-full block w-fit" onClick={toggleMenu}>
-                                Where to Find Us
+                            <Link href="/login" className="text-black bg-primary hover:bg-primary-accent px-5 py-2 rounded-full block w-fit" onClick={toggleMenu}>
+Login
                             </Link>
                         </li>
                     </ul>
