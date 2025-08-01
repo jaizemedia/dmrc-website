@@ -21,11 +21,13 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 const Dashboard: React.FC = () => {
+  // Volunteer form state
   const [volunteerName, setVolunteerName] = useState('');
   const [volunteerEmail, setVolunteerEmail] = useState('');
   const [volunteerMessage, setVolunteerMessage] = useState('');
   const [volunteerSuccess, setVolunteerSuccess] = useState<string | null>(null);
 
+  // Prayer request state
   const [prayerMessage, setPrayerMessage] = useState('');
   const [prayerSuccess, setPrayerSuccess] = useState<string | null>(null);
 
@@ -65,7 +67,7 @@ const Dashboard: React.FC = () => {
 
   return (
     <Container>
-      <div className="pt-[90px] max-w-4xl mx-auto py-12 space-y-16">
+      <div className="pt-[90px] max-w-4xl mx-auto py-12 space-y-16 px-4">
         {/* Volunteer Form */}
         <section>
           <h2 className="text-3xl font-bold mb-4">Volunteer</h2>
@@ -123,9 +125,40 @@ const Dashboard: React.FC = () => {
           </form>
         </section>
 
+        {/* Payment Iframe */}
+        <section className="make-payment-section">
+ <button
+  onClick={() => window.location.href = "https://donate.stripe.com/3cs8AzeVxc8se1W5kk"}
+  className="
+    flex items-center justify-center
+    bg-gradient-to-r from-purple-600 to-indigo-700
+    hover:from-green-400 hover:to-blue-500
+    text-white text-lg font-semibold
+    py-3 px-8 rounded-full shadow-lg
+    transition-all duration-300 ease-in-out
+  "
+>
+  <span className="mr-3">Donate (Any Amount)</span>
+  <div className="flex items-center space-x-3">
+  
+    <img
+      src="https://www.svgrepo.com/show/452157/apple-pay.svg"
+      alt="Apple Pay"
+      className="h-6 w-6"
+    />
+    <img
+      src="https://www.svgrepo.com/show/508690/google-pay.svg"
+      alt="Google Pay"
+      className="h-6 w-6"
+    />
+  </div>
+</button>
+
+</section>
+
+
         {/* Events Section */}
         <section>
-          <h2 className="text-3xl font-bold mb-4">Upcoming Events</h2>
           <div className="border p-6 rounded-md bg-white shadow-sm">
             <EventsWidget />
           </div>
